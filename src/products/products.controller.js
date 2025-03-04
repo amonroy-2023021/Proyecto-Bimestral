@@ -1,19 +1,26 @@
 import Product from "../products/products.model.js";
 import Category from "../Category/category.model.js";
-import { ca } from "date-fns/locale";
 
 export const createProduct = async (req, res) => {
     try {
         const { name, description, price, stock, categoryName } = req.body;
         console.log(categoryName);
 
-        // Buscar la categoría por nombre
-        const category = await Category.findOne({ name: categoryName });
-        if (!category) {
-            return res.status(404).json({
-                success: false,
-                msg: "Categoría no encontrada"
-            });
+        let category;
+        if (categoryName) {
+            category = await Category.findOne({ name: categoryName });
+            if (!category) {
+                return res.status(404).json({
+                    success: false,
+                    msg: "Categoría no encontrada"
+                });
+            }
+        } else {
+            category = await Category.findOne({ name: "Sin Categoría" });
+            if (!category) {
+                category = new Category({ name: "Sin Categoría" });
+                await category.save();
+            }
         }
 
         const newProduct = new Product({ name, description, price, stock, category: category._id });
@@ -35,7 +42,7 @@ export const createProduct = async (req, res) => {
 
 export const getProducts = async (req, res) => {
     try {
-        const products = await Product.find();
+        const products = await Product.find({ }).populate("category", "name");
         res.status(200).json({
             success: true,
             products
