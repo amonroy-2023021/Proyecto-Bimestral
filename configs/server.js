@@ -8,7 +8,7 @@ import { dbConnection } from "./mongo.js";
 import authRoutes from "../src/auth/auth.routes.js";
 import userRoutes from "../src/users/user.routes.js";
 import productRoutes from "../src/products/products.routes.js";
-
+import categoryRoutes from "../src/Category/category.routes.js";
 
 
 const middlewares = (app) => {
@@ -22,7 +22,8 @@ const middlewares = (app) => {
 const routes = (app) => {
     app.use("/tiendaOnline/v1/auth", authRoutes),
     app.use("/tiendaOnline/v1/user", userRoutes),
-    app.use("/tiendaOnline/v1/product", productRoutes)
+    app.use("/tiendaOnline/v1/product", productRoutes),
+    app.use("/tiendaOnline/v1/category", categoryRoutes)
     }
 const conectarDB = async () => {
     try {

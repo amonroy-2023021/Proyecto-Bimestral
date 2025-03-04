@@ -1,20 +1,33 @@
-import { ca } from "date-fns/locale";
 import Product from "../products/products.model.js";
+import Category from "../Category/category.model.js";
+import { ca } from "date-fns/locale";
 
 export const createProduct = async (req, res) => {
     try {
-        const { name, description, price, stock } = req.body;
-        const newProduct = new Product({ name, description, price, stock});
+        const { name, description, price, stock, categoryName } = req.body;
+        console.log(categoryName);
+
+        // Buscar la categoría por nombre
+        const category = await Category.findOne({ name: categoryName });
+        if (!category) {
+            return res.status(404).json({
+                success: false,
+                msg: "Categoría no encontrada"
+            });
+        }
+
+        const newProduct = new Product({ name, description, price, stock, category: category._id });
         await newProduct.save();
+        const populatedProduct = await Product.findById(newProduct._id).populate('category', 'name');
         res.status(201).json({
             success: true,
-            msg: "producto creado",
-            Product: newProduct
+            msg: "Producto creado",
+            product: populatedProduct
         });
-    }catch (err) {
+    } catch (err) {
         res.status(500).json({
             success: false,
-            msg: "error al crear producto",
+            msg: "Error al crear producto",
             error: err.message
         });
     }
