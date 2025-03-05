@@ -9,7 +9,7 @@ import authRoutes from "../src/auth/auth.routes.js";
 import userRoutes from "../src/users/user.routes.js";
 import productRoutes from "../src/products/products.routes.js";
 import categoryRoutes from "../src/Category/category.routes.js";
-
+import ShopcartRoutes from "../src/shopcart/cart.routes.js";
 
 const middlewares = (app) => {
     app.use(express.urlencoded({ extended: false }));
@@ -23,7 +23,8 @@ const routes = (app) => {
     app.use("/tiendaOnline/v1/auth", authRoutes),
     app.use("/tiendaOnline/v1/user", userRoutes),
     app.use("/tiendaOnline/v1/product", productRoutes),
-    app.use("/tiendaOnline/v1/category", categoryRoutes)
+    app.use("/tiendaOnline/v1/category", categoryRoutes),
+    app.use("/tiendaOnline/v1/shopcart", ShopcartRoutes)
     }
 const conectarDB = async () => {
     try {
