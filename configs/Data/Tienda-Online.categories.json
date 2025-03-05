@@ -1,0 +1,21 @@
+[{
+  "_id": {
+    "$oid": "67c77b3f801c72db88c2bae0"
+  },
+  "name": "Deportes",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67c77b4c801c72db88c2bae3"
+  },
+  "name": "Entretenimiento",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67c8c4874fc59dfda34b4e41"
+  },
+  "name": "Sin Categoría",
+  "__v": 0
+}]

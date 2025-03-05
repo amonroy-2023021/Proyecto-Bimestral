@@ -31,11 +31,16 @@ export const completePurchase = async (req, res) => {
         }
 
         let totalAmount = 0;
-        const items = cart.items.map(item => {
+        const items = cart.items.map(async item => {
             if (!item.product.category) {
                 throw new Error(`El producto ${item.product.name} no tiene una categoría asignada.`);
             }
             totalAmount += item.product.price * item.quantityProducts;
+
+            await Product.findByIdAndUpdate(item.product._id, {
+                $inc: { sold: item.quantityProducts, stock: -item.quantityProducts }
+            });
+
             return {
                 product: item.product._id,
                 quantity: item.quantityProducts,
@@ -44,31 +49,23 @@ export const completePurchase = async (req, res) => {
             };
         });
 
+        const resolvedItems = await Promise.all(items);
+
         const bill = new Bill({
             user: user._id,
-            items,
+            items: resolvedItems,
             totalAmount,
             date: new Date()
         });
 
         await bill.save();
 
-        for (const item of cart.items) {
-            const product = await Product.findById(item.product._id);
-            if (product) {
-                product.stock -= item.quantityProducts;
-                await product.save();
-            }
-        }
-
-        cart.items = [];
-        cart.totalPrice = 0;
-        await cart.save();
+        await Cart.findByIdAndUpdate(cart._id, { items: [], totalPrice: 0 });
 
         res.status(200).json({
             success: true,
             msg: "Compra completada con éxito",
-            billId: bill._id
+            bill
         });
     } catch (err) {
         res.status(500).json({

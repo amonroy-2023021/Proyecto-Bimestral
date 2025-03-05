@@ -1,0 +1,130 @@
+[{
+  "_id": {
+    "$oid": "67c8b6349cc7b5a62f6a688e"
+  },
+  "user": {
+    "$oid": "67c8b3e69cc7b5a62f6a686b"
+  },
+  "items": [
+    {
+      "product": {
+        "$oid": "67c8b5cd9cc7b5a62f6a687b"
+      },
+      "quantity": 1,
+      "price": 2.99,
+      "total": 2.99,
+      "_id": {
+        "$oid": "67c8b6349cc7b5a62f6a688f"
+      }
+    }
+  ],
+  "totalAmount": 2.99,
+  "date": {
+    "$date": "2025-03-05T20:38:12.299Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67c8b9118a9ed979bc15eb7b"
+  },
+  "user": {
+    "$oid": "67c8b3e69cc7b5a62f6a686b"
+  },
+  "items": [
+    {
+      "product": {
+        "$oid": "67c8b5cd9cc7b5a62f6a687b"
+      },
+      "quantity": 1,
+      "price": 2.99,
+      "total": 2.99,
+      "_id": {
+        "$oid": "67c8b9118a9ed979bc15eb7c"
+      }
+    }
+  ],
+  "totalAmount": 2.99,
+  "date": {
+    "$date": "2025-03-05T20:50:25.172Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67c8c070982ed5929e766369"
+  },
+  "user": {
+    "$oid": "67c8b3e69cc7b5a62f6a686b"
+  },
+  "items": [
+    {
+      "product": {
+        "$oid": "67c76621cadb239803c1cfdf"
+      },
+      "quantity": 50,
+      "price": 19.99,
+      "total": 999.4999999999999,
+      "_id": {
+        "$oid": "67c8c070982ed5929e76636a"
+      }
+    }
+  ],
+  "totalAmount": 999.4999999999999,
+  "date": {
+    "$date": "2025-03-05T21:21:52.272Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67c8c1da5cecb9024f93fc59"
+  },
+  "user": {
+    "$oid": "67c8b3e69cc7b5a62f6a686b"
+  },
+  "items": [
+    {
+      "product": {
+        "$oid": "67c76621cadb239803c1cfdf"
+      },
+      "quantity": 50,
+      "price": 19.99,
+      "total": 999.4999999999999,
+      "_id": {
+        "$oid": "67c8c1da5cecb9024f93fc5a"
+      }
+    }
+  ],
+  "totalAmount": 999.4999999999999,
+  "date": {
+    "$date": "2025-03-05T21:27:54.305Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67c8c5ce34693efdbc4d14c2"
+  },
+  "user": {
+    "$oid": "67c8b3e69cc7b5a62f6a686b"
+  },
+  "items": [
+    {
+      "product": {
+        "$oid": "67c8c4e04fc59dfda34b4e49"
+      },
+      "quantity": 4,
+      "price": 5,
+      "total": 20,
+      "_id": {
+        "$oid": "67c8c5ce34693efdbc4d14c3"
+      }
+    }
+  ],
+  "totalAmount": 20,
+  "date": {
+    "$date": "2025-03-05T21:44:46.962Z"
+  },
+  "__v": 0
+}]

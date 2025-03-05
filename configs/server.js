@@ -11,6 +11,9 @@ import productRoutes from "../src/products/products.routes.js";
 import categoryRoutes from "../src/Category/category.routes.js";
 import ShopcartRoutes from "../src/shopcart/cart.routes.js";
 import billRouter from "../src/bills/bills.routes.js";
+import { initAdmin} from "../src/users/user.controller.js";
+import { initDefaultCategory } from "../src/Category/category.controller.js";
+import { swaggerDocs, swaggerUi } from "./swagger.js";
 
 const middlewares = (app) => {
     app.use(express.urlencoded({ extended: false }));
@@ -27,10 +30,13 @@ const routes = (app) => {
     app.use("/tiendaOnline/v1/category", categoryRoutes),
     app.use("/tiendaOnline/v1/shopcart", ShopcartRoutes),
     app.use("/tiendaOnline/v1/bill", billRouter)
+    app.use("/tiendaOnline/v1/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs))
     }
 const conectarDB = async () => {
     try {
         await dbConnection();
+        await initAdmin();
+        await initDefaultCategory();
     } catch (err) {
         console.log(`Database connection failed: ${err}`);
         process.exit(1);

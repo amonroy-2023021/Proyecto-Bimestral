@@ -1,4 +1,5 @@
 import User from "../users/user.model.js";
+import argon2 from "argon2";
 
 
 export const updateUser = async (req, res) => {
@@ -94,4 +95,29 @@ export const deleteUser = async (req = request, res = response) => {
         });
     }
 };
+
+export const initAdmin = async () => {
+    try {
+        const adminExists = await User.findOne({ role: 'ADMIN_ROLE' });
+        if (!adminExists) {
+            const hashedPassword = await argon2.hash('adminpassword');
+            const admin = new User({
+                name: 'Admin',
+                surname: 'User',
+                username: 'admin',
+                email: 'admin@example.com',
+                password: hashedPassword,
+                phone: '12345678',
+                role: 'ADMIN_ROLE'
+            });
+            await admin.save();
+            console.log('Admin user created');
+        } else {
+            console.log('Admin user already exists');
+        }
+    } catch (error) {
+        console.error('Error creating admin user:', error);
+    }
+};
+
 

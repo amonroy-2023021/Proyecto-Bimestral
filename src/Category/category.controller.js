@@ -99,3 +99,18 @@ export const getCategories = async (req, res) => {
         });
     }
 };
+
+export const initDefaultCategory = async () => {
+    try {
+        const defaultCategory = await Category.findOne({ name: "Sin Categoría" });
+        if (!defaultCategory) {
+            const category = new Category({ name: "Sin Categoría" });
+            await category.save();
+            console.log('Default category "Sin Categoría" created');
+        } else {
+            console.log('Default category "Sin Categoría" already exists');
+        }
+    } catch (error) {
+        console.error('Error creating default category:', error);
+    }
+};

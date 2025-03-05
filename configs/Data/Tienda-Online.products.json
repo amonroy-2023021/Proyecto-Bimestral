@@ -1,0 +1,112 @@
+[{
+  "_id": {
+    "$oid": "67c76621cadb239803c1cfdf"
+  },
+  "name": "Camiseta de Algodón",
+  "description": "Camiseta cómoda y suave hecha de algodón 100%",
+  "price": 19.99,
+  "stock": 100,
+  "sold": 100,
+  "category": {
+    "$oid": "67c77533592735b47a90bb7f"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67c7675a485b6bcdd0892d37"
+  },
+  "name": "Camiseta de Algodón roja",
+  "description": "Camiseta cómoda y suave hecha de algodón 100%",
+  "price": 19.99,
+  "stock": 150,
+  "sold": 0,
+  "category": {
+    "$oid": "67c77533592735b47a90bb7f"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67c77533592735b47a90bb81"
+  },
+  "name": "Producto de Prueba",
+  "description": "Descripción del producto de prueba",
+  "price": 100,
+  "stock": 50,
+  "sold": 0,
+  "category": {
+    "$oid": "67c77533592735b47a90bb7f"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67c778dfed8898a8ec469e05"
+  },
+  "name": "Product",
+  "description": "Producto 2",
+  "price": 10,
+  "stock": 5,
+  "sold": 0,
+  "category": {
+    "$oid": "67c77533592735b47a90bb7f"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67c7790ced8898a8ec469e0b"
+  },
+  "name": "Product",
+  "description": "Producto 2",
+  "price": 10,
+  "stock": 5,
+  "sold": 0,
+  "category": {
+    "$oid": "67c77533592735b47a90bb7f"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67c77e9bd92c62b64124ec58"
+  },
+  "name": "Jenga",
+  "description": "Juego de mesa",
+  "price": 10,
+  "stock": 5,
+  "sold": 0,
+  "category": {
+    "$oid": "67c77b4c801c72db88c2bae3"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67c8b5cd9cc7b5a62f6a687b"
+  },
+  "name": "Gaseosa",
+  "description": "Bebida Pepsi",
+  "price": 2.99,
+  "stock": 0,
+  "sold": 1,
+  "category": {
+    "$oid": "67c77b4c801c72db88c2bae3"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67c8c4e04fc59dfda34b4e49"
+  },
+  "name": "Dulces Colombina",
+  "description": "dulces de varios sabores, bolsa de 40 unidades",
+  "price": 5,
+  "stock": 6,
+  "sold": 4,
+  "category": {
+    "$oid": "67c8c4874fc59dfda34b4e41"
+  },
+  "__v": 0
+}]
