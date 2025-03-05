@@ -10,6 +10,7 @@ import userRoutes from "../src/users/user.routes.js";
 import productRoutes from "../src/products/products.routes.js";
 import categoryRoutes from "../src/Category/category.routes.js";
 import ShopcartRoutes from "../src/shopcart/cart.routes.js";
+import billRouter from "../src/bills/bills.routes.js";
 
 const middlewares = (app) => {
     app.use(express.urlencoded({ extended: false }));
@@ -24,7 +25,8 @@ const routes = (app) => {
     app.use("/tiendaOnline/v1/user", userRoutes),
     app.use("/tiendaOnline/v1/product", productRoutes),
     app.use("/tiendaOnline/v1/category", categoryRoutes),
-    app.use("/tiendaOnline/v1/shopcart", ShopcartRoutes)
+    app.use("/tiendaOnline/v1/shopcart", ShopcartRoutes),
+    app.use("/tiendaOnline/v1/bill", billRouter)
     }
 const conectarDB = async () => {
     try {
