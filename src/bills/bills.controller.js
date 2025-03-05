@@ -132,3 +132,30 @@ export const generateBillPDF = async (req, res) => {
         });
     }
 };
+
+export const HistoryShop = async (req, res) => {
+    try {
+        const { uid } = req.params;
+
+        const user = await User.findById(uid);
+        if (!user) {
+            return res.status(404).json({
+                success: false,
+                msg: "Usuario no encontrado"
+            });
+        }
+
+        const bills = await Bill.find({ user: user._id }).populate("items.product").sort({ date: -1 });
+
+        res.status(200).json({
+            success: true,
+            bills
+        });
+    } catch (err) {
+        res.status(500).json({
+            success: false,
+            msg: "Error al obtener el historial de compras",
+            error: err.message
+        });
+    }
+};

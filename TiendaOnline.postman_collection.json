@@ -818,6 +818,32 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Historial",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:3000/tiendaOnline/v1/bill/history/67c7be0675671400c8e22ab3",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3000",
+							"path": [
+								"tiendaOnline",
+								"v1",
+								"bill",
+								"history",
+								"67c7be0675671400c8e22ab3"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		}
