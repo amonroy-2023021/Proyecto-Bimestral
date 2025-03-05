@@ -159,4 +159,51 @@ export const sellingProducts = async (req, res) => {
             error: err.message
         });
     }
-}
+};
+
+export const listProductsBy = async (req, res) => {
+    try {
+        const { FiltrarPor } = req.query;
+
+        let products;
+
+        if (!FiltrarPor) {
+            return res.status(400).json({
+                success: false,
+                msg: "Debe proporcionar un valor en FiltrarPor"
+            });
+        }
+
+        if (FiltrarPor === 'MasVendidos') {
+            products = await Product.find({}).sort({ sold: -1 }).limit(10).populate("category", "name");
+        } else {
+            const productByName = await Product.find({ name: { $regex: FiltrarPor, $options: "i" } }).populate("category", "name");
+
+            if (productByName.length > 0) {
+                products = productByName;
+            } else {
+                const category = await Category.findOne({ name: FiltrarPor });
+
+                if (category) {
+                    products = await Product.find({ category: category._id }).populate("category", "name");
+                } else {
+                    return res.status(404).json({
+                        success: false,
+                        msg: "No se encontraron productos con ese criterio"
+                    });
+                }
+            }
+        }
+
+        res.status(200).json({
+            success: true,
+            products
+        });
+    } catch (err) {
+        res.status(500).json({
+            success: false,
+            msg: "Error al listar productos",
+            error: err.message
+        });
+    }
+};
